@@ -1,4 +1,4 @@
-import os, glob, logging, sys, warnings
+import os, glob, logging, sys, warnings, time
 warnings.filterwarnings("ignore")
 from mace.cli.run_train import main as mace_run_train_main
 from subprocess import run
@@ -19,5 +19,8 @@ def train_mace(config_file_path):
     logging.getLogger().handlers.clear()
     sys.argv = ["program", "--config", config_file_path]
     mace_run_train_main()
-
+a = time.time()
 train_mace('config.yaml')
+b = time.time()
+
+print('Total training time: ', b-a, ' s')
